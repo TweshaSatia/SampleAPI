@@ -1,43 +1,103 @@
 import { v4 as uuid } from 'uuid';
+import fs from 'fs'
 
 let customers = [];
 
 export const getCustomers = (req, res) => {
-    console.log(`Customers in the database: ${customers}`);
-
-    res.send(customers);
+    const customers = getCustomerData()
+    res.send(customers)
 }
 
 export const createCustomer = (req, res) => {   
-    const customer = req.body;
 
-    customers.push({...customer, id: uuid()});
+    //get the existing customer data
+    const existCustomers = getCustomerData();
+    const customerData = req.body
+
+    //check if the customerData fields are missing
+    if (customerData.firstname == null || customerData.age == null || customerData.email == null || customerData.hasAppliedforLoan == null) {
+        return res.status(401).send({error: true, msg: 'Customer data missing'})
+    }
     
-    res.send(`Customer ${customer.firstname} added to the database.`);
+    //check if the customername exist already
+    const findExist = existCustomers.find( customer => customer.email === customerData.email )
+    if (findExist) {
+        return res.status(409).send({error: true, msg: 'customer already exist'})
+    }
+    //append the customer data
+    existCustomers.push({...customerData, id: uuid()})
+    //save the new customer data
+    saveCustomerData(existCustomers);
+    res.send({success: true, msg: 'Customer data added successfully'})
 };
 
 export const getCustomer = (req, res) => {
-    const {id}=req.params;
-    const foundCustomer = customers.find((customer)=>customer.id===id)
+    const id=req.params.id;
+    //get the existing customerdata
+    const existCustomers = getCustomerData()
+
+    const foundCustomer = existCustomers.find(customer =>customer.id===id)
+    if (!foundCustomer) {
+        return res.status(409).send({error: true, msg: 'customer does not exist'})
+    }
     res.send(foundCustomer);
 };
 
 export const deleteCustomer = (req, res) => { 
-    res.send(`customer with id ${req.params.id} has been deleted`);
-    
-    customers = customers.filter((customer) => customer.id !== req.params.id);
+
+    const id = req.params.id
+    //get the existing customerdata
+    const existCustomers = getCustomerData()
+    //filter the customerdata to remove it
+    const filterCustomer = existCustomers.filter( customer => customer.id !== id )
+    if ( existCustomers.length === filterCustomer.length ) {
+        return res.status(409).send({error: true, msg: 'customer does not exist'})
+    }
+    //save the filtered data
+    saveCustomerData(filterCustomer)
+    res.send({success: true, msg: 'Customer removed successfully'})
+
 };
 
 export const updateCustomer =  (req,res) => {
-    const customer = customers.find((customer) => customer.id === req.params.id);
-    
-    customer.firstname = req.body.firstname;
-    customer.lastname = req.body.lastname;
-    customer.age = req.body.age;
-    customer.hasAppliedforLoan=req.body.hasAppliedforLoan;
 
-    res.send(`Updated successfully`);
+     //get the id from url
+     const id = req.params.id
 
-   
+     //get the update data
+     const customerData = req.body
+
+     //get the existing customer data
+     const existCustomers = getCustomerData()
+
+     //check if the customername exist or not       
+     const findExist = existCustomers.find( customer => customer.id === id )
+     if (!findExist) {
+         return res.status(409).send({error: true, msg: 'customer does not exist'})
+     }
+
+     //filter the customerdata
+     const updateCustomer = existCustomers.filter( customer => customer.id !== id )
+
+     //push the updated data
+     updateCustomer.push(customerData)
+     //finally save it
+
+     saveCustomerData(updateCustomer)
+     res.send({success: true, msg: 'Customer data updated successfully'})
+
+
 };
+
+//read the customer data from json file
+const saveCustomerData = (data) => {
+    const stringifyData = JSON.stringify(data)
+    fs.writeFileSync('customers.json', stringifyData)
+}
+//get the customer data from json file
+const getCustomerData = () => {
+    const jsonData = fs.readFileSync('customers.json')
+    return JSON.parse(jsonData)    
+}
+
 
