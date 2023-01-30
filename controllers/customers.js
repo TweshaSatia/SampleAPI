@@ -15,7 +15,7 @@ export const createCustomer = (req, res) => {
     const customerData = req.body
 
     //check if the customerData fields are missing
-    if (customerData.firstname == null || customerData.age == null || customerData.email == null || customerData.hasAppliedforLoan == null) {
+    if (customerData.firstname == null || customerData.lastname==null || customerData.age == null || customerData.email == null || customerData.hasAppliedforLoan == null) {
         return res.status(401).send({error: true, msg: 'Customer data missing'})
     }
     

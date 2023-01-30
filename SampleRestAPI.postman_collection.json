@@ -44,7 +44,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n      \"firstname\":\"Vishal11\",\n      \"age\":25,\n      \"email\":\"vishal@gmail.com\",\n      \"hasAppliedforLoan\":false\n    \n}",
+					"raw": "{\n      \"firstname\":\"Namrata\",\n      \"lastname\":\"Rathore\",\n      \"age\":23,\n      \"email\":\"namrata@gmail.com\",\n      \"hasAppliedforLoan\":false\n    \n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -67,11 +67,23 @@
 		},
 		{
 			"name": "Get customer by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "http://localhost:5000/customers/110fe802-06ba-4db4-adf5-f2b95a887835",
+					"raw": "http://localhost:5000/customers/becd3140-01de-4827-8659-08701b9f05a8",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -79,7 +91,7 @@
 					"port": "5000",
 					"path": [
 						"customers",
-						"110fe802-06ba-4db4-adf5-f2b95a887835"
+						"becd3140-01de-4827-8659-08701b9f05a8"
 					]
 				}
 			},
@@ -92,7 +104,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n        \"firstname\": \"Saloni11\",\n        \"age\": 22,\n        \"email\": \"saloni11@gmail.com\",\n        \"hasAppliedforLoan\": true,\n        \"id\": \"7a1dae08-9685-49a2-8c78-e25f52564c76\"\n    }",
+					"raw": "{\n    \"firstname\": \"Twesha\",\n    \"lastname\": \"Satia\",\n    \"age\": 23,\n    \"email\": \"twesha@gmail.com\",\n    \"hasAppliedforLoan\": true,\n    \"id\": \"becd3140-01de-4827-8659-08701b9f05a8\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -100,7 +112,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5000/customers/7a1dae08-9685-49a2-8c78-e25f52564c76",
+					"raw": "http://localhost:5000/customers/becd3140-01de-4827-8659-08701b9f05a8",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -108,7 +120,7 @@
 					"port": "5000",
 					"path": [
 						"customers",
-						"7a1dae08-9685-49a2-8c78-e25f52564c76"
+						"becd3140-01de-4827-8659-08701b9f05a8"
 					]
 				}
 			},
@@ -120,7 +132,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:5000/customers/8e571bac-0213-4f1d-80b1-821aa14fd26c",
+					"raw": "http://localhost:5000/customers/1d8761fa-8bd5-4b69-947b-f14bee52c4a4",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -128,7 +140,7 @@
 					"port": "5000",
 					"path": [
 						"customers",
-						"8e571bac-0213-4f1d-80b1-821aa14fd26c"
+						"1d8761fa-8bd5-4b69-947b-f14bee52c4a4"
 					]
 				}
 			},
