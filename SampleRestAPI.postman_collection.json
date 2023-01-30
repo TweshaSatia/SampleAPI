@@ -1,0 +1,138 @@
+{
+	"info": {
+		"_postman_id": "3c1ea900-b8d2-422c-b7e5-113451bade37",
+		"name": "SampleRestAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22893384"
+	},
+	"item": [
+		{
+			"name": "Get Customers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/customers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Customer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n      \"firstname\":\"Vishal11\",\n      \"age\":25,\n      \"email\":\"vishal@gmail.com\",\n      \"hasAppliedforLoan\":false\n    \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/customers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get customer by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/customers/110fe802-06ba-4db4-adf5-f2b95a887835",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"customers",
+						"110fe802-06ba-4db4-adf5-f2b95a887835"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Customer by id",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"firstname\": \"Saloni11\",\n        \"age\": 22,\n        \"email\": \"saloni11@gmail.com\",\n        \"hasAppliedforLoan\": true,\n        \"id\": \"7a1dae08-9685-49a2-8c78-e25f52564c76\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/customers/7a1dae08-9685-49a2-8c78-e25f52564c76",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"customers",
+						"7a1dae08-9685-49a2-8c78-e25f52564c76"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete customer by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/customers/8e571bac-0213-4f1d-80b1-821aa14fd26c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"customers",
+						"8e571bac-0213-4f1d-80b1-821aa14fd26c"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
