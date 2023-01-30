@@ -80,7 +80,7 @@ export const updateCustomer =  (req,res) => {
      const updateCustomer = existCustomers.filter( customer => customer.id !== id )
 
      //push the updated data
-     updateCustomer.push(customerData)
+     updateCustomer.push({...customerData})
      //finally save it
 
      saveCustomerData(updateCustomer)
